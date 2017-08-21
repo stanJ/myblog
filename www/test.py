@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import orm
+from models import User
+import asyncio
+
+async def test(loop):
+    await orm.create_pool(loop, user='root', password='password', db='awesome')
+
+    u = await User.find('00150330858907615e816dda62d422b9983e8bbe0f11499000')
+    u.name = 'test111'
+    await u.update()
+    await orm.destroy_pool()
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(test(loop))
+loop.close()
