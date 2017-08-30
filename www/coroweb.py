@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import functools, os, inspect, logging, asyncio
+# logging.basicConfig(level=logging.INFO)
 from aiohttp import web
 from urllib import parse
 from apis import APIError
